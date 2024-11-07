@@ -1,6 +1,7 @@
 import { Button, Table } from "@mantine/core";
-import { IconEdit, IconTrash } from "@tabler/icons-react";
+import { IconEdit } from "@tabler/icons-react";
 import { useAppStore } from "../store/useAppStore";
+import ContactDelete from "./ContactDelete";
 
 interface Props {}
 
@@ -17,9 +18,7 @@ export default function ContactList(_props: Props): JSX.Element {
         <Button variant="subtle" color="cyan">
           <IconEdit />
         </Button>
-        <Button variant="subtle" color="red">
-          <IconTrash />
-        </Button>
+        <ContactDelete contact={contact} />
       </Table.Td>
     </Table.Tr>
   ));

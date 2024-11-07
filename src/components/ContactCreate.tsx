@@ -11,6 +11,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { useForm, yupResolver } from "@mantine/form";
 import { Contact, contactCategories, contactStatus } from "../types/contact";
 import * as yup from "yup";
+import { useAppStore } from "../store/useAppStore";
+import uuid4 from "uuid4";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -34,9 +36,10 @@ interface Props {}
 
 export default function ContactCreate(_props: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
-  const form = useForm<Omit<Contact, "id">>({
+  const form = useForm<Contact>({
     mode: "uncontrolled",
     initialValues: {
+      id: uuid4(),
       name: "",
       category: "Amigos",
       status: "Pendiente",
@@ -46,6 +49,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
 
     validate: yupResolver(schema),
   });
+  const addContact = useAppStore((store) => store.addContact);
 
   return (
     <>
@@ -53,7 +57,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
       <Modal opened={opened} onClose={close} title="Agregar contacto">
         <form
           onSubmit={form.onSubmit((values) => {
-            console.log(values);
+            addContact(values);
           })}
         >
           <SimpleGrid spacing={"xs"}>

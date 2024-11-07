@@ -464,6 +464,11 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.13.4.tgz#2e4a8aa910a1d9cfc8ad513b33d3a483a41c7f88"
   integrity sha512-B2QCegQyWlLdenVNaLNK8H9cTAjLW9JKJ3xWg+ShhpjZDHT2hjZz4L0Nt071Z7mPvyAaOwKGM0FyqTcTjdECfg==
 
+"@mantine/modals@^7.13.4":
+  version "7.13.4"
+  resolved "https://registry.yarnpkg.com/@mantine/modals/-/modals-7.13.4.tgz#960a16e51176e1f3b3f1b6f6c4f313bab36a4b40"
+  integrity sha512-CYJVRelRRAZQccdJUsRQONMWdHpV+m1KhgXX7pVcn6nPwKSBxiBVrkoFnXpKMfVMHQR1gvZ4B+hg7y3bmr6QXQ==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -654,6 +659,11 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
+
+"@types/uuid4@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/uuid4/-/uuid4-2.0.3.tgz#0dd3e35f4ee1d379d3f29c09f5d94fa405ad36b4"
+  integrity sha512-/fyn8jzKzeL/wci7GOaz8TPjKapD+WJUBUCr/ED2xcUcx5fA9rZH2fDZiV2Z/a+040mp5Zi3dgIi/Vey/uQBxw==
 
 "@typescript-eslint/eslint-plugin@8.13.0":
   version "8.13.0"
@@ -1770,6 +1780,11 @@ util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
+
+uuid4@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/uuid4/-/uuid4-2.0.3.tgz#241e5dfe1704a79c52e2aa40e7e581a5e7b01ab4"
+  integrity sha512-CTpAkEVXMNJl2ojgtpLXHgz23dh8z81u6/HEPiQFOvBc/c2pde6TVHmH4uwY0d/GLF3tb7+VDAj4+2eJaQSdZQ==
 
 vite@^5.4.10:
   version "5.4.10"
