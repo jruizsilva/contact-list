@@ -9,7 +9,6 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import UserMenu from "../UserMenu";
 
 const links = [
   { to: "/", label: "Inicio" },

@@ -27,7 +27,7 @@ export default tseslint.config(
         "warn",
         { argsIgnorePattern: "^_" },
       ],
-      "@typescript-eslint/no-empty-object-type": "never",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   }
 );
