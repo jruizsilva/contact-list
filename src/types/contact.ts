@@ -1,11 +1,10 @@
 interface Contact {
   id: string;
   name: string;
-  description?: string;
-  email?: string;
-  phone?: string;
   category: ContactCategory;
   status: ContactStatus;
+  phone?: string;
+  description?: string;
 }
 
 type ContactCategory =
@@ -18,4 +17,20 @@ type ContactCategory =
 
 type ContactStatus = "Pendiente" | "En progreso" | "Auspiciado" | "Sin interes";
 
-export type { Contact };
+export const contactCategories = [
+  "Familia",
+  "Amigos",
+  "Recreaciones",
+  "Compras",
+  "Trabajo",
+  "Estudio",
+];
+
+export const contactStatus = [
+  "Pendiente",
+  "En progreso",
+  "Auspiciado",
+  "Sin interes",
+];
+
+export type { Contact, ContactCategory, ContactStatus };
