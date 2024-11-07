@@ -1,10 +1,11 @@
 import { create } from "zustand";
 import { Contact } from "../types/contact";
 import { persist } from "zustand/middleware";
+import uuid4 from "uuid4";
 
 interface Store {
   contacts: Contact[];
-  addContact: (contact: Contact) => void;
+  addContact: (contact: Omit<Contact, "id">) => void;
   updateContact: (contact: Contact) => void;
   deleteContact: (contact: Contact) => void;
 }
@@ -13,8 +14,10 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
   persist(
     (set) => ({
       contacts: [],
-      addContact: (contact: Contact) =>
-        set((state) => ({ contacts: [...state.contacts, contact] })),
+      addContact: (contact: Omit<Contact, "id">) =>
+        set((state) => ({
+          contacts: [...state.contacts, { ...contact, id: uuid4() }],
+        })),
       updateContact: (contact: Contact) =>
         set((state) => ({
           contacts: state.contacts.map((c) =>

@@ -36,10 +36,9 @@ interface Props {}
 
 export default function ContactCreate(_props: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
-  const form = useForm<Contact>({
+  const form = useForm<Omit<Contact, "id">>({
     mode: "uncontrolled",
     initialValues: {
-      id: uuid4(),
       name: "",
       category: "Amigos",
       status: "Pendiente",
@@ -58,6 +57,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
         <form
           onSubmit={form.onSubmit((values) => {
             addContact(values);
+            form.reset();
           })}
         >
           <SimpleGrid spacing={"xs"}>
