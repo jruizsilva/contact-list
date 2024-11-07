@@ -6,6 +6,7 @@ const initialContactList: Contact[] = [
     id: "1",
     name: "Jonathan",
     description: "C",
+    category: "Familia",
     status: "Pendiente",
   },
 ];

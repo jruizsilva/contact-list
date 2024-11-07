@@ -1,24 +1,18 @@
 import { Button, Table } from "@mantine/core";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
+import { useAppStore } from "../store/useAppStore";
 
 interface Props {}
 
-const elements = [
-  {
-    name: "Jonathan",
-    description: "C",
-    category: "Amigos",
-    status: "Pendiente",
-  },
-];
-
 export default function ContactList(_props: Props): JSX.Element {
-  const rows = elements.map((element) => (
-    <Table.Tr key={element.name}>
-      <Table.Td>{element.name}</Table.Td>
-      <Table.Td>{element.name}</Table.Td>
-      <Table.Td>{element.description}</Table.Td>
-      <Table.Td>{element.description}</Table.Td>
+  const contacts = useAppStore((store) => store.contacts);
+
+  const rows = contacts.map((contact) => (
+    <Table.Tr key={contact.name}>
+      <Table.Td>{contact.name}</Table.Td>
+      <Table.Td>{contact.description}</Table.Td>
+      <Table.Td>{contact.category}</Table.Td>
+      <Table.Td>{contact.status}</Table.Td>
       <Table.Td style={{ display: "flex", justifyContent: "end" }}>
         <Button variant="subtle" color="cyan">
           <IconEdit />

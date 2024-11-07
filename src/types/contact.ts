@@ -4,7 +4,18 @@ interface Contact {
   description?: string;
   email?: string;
   phone?: string;
-  status: "Pendiente" | "En progreso" | "Auspiciado" | "Sin interes";
+  category: ContactCategory;
+  status: ContactStatus;
 }
+
+type ContactCategory =
+  | "Familia"
+  | "Amigos"
+  | "Recreaciones"
+  | "Compras"
+  | "Trabajo"
+  | "Estudio";
+
+type ContactStatus = "Pendiente" | "En progreso" | "Auspiciado" | "Sin interes";
 
 export type { Contact };
