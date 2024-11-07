@@ -1,6 +1,15 @@
 import { create } from "zustand";
 import { Contact } from "../types/contact";
 
+const initialContactList: Contact[] = [
+  {
+    id: "1",
+    name: "Jonathan",
+    description: "C",
+    status: "Pendiente",
+  },
+];
+
 interface Store {
   contacts: Contact[];
   addContact: (contact: Contact) => void;
@@ -9,7 +18,7 @@ interface Store {
 }
 
 export const useAppStore = create<Store>((set) => ({
-  contacts: [],
+  contacts: initialContactList,
   addContact: (contact: Contact) =>
     set((state) => ({ contacts: [...state.contacts, contact] })),
   updateContact: (contact: Contact) =>
