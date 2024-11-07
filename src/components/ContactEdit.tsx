@@ -1,17 +1,18 @@
-import {
-  Button,
-  Group,
-  Modal,
-  Select,
-  SimpleGrid,
-  Textarea,
-  TextInput,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import { useForm, yupResolver } from "@mantine/form";
-import { Contact, contactCategories, contactStatus } from "../types/contact";
 import * as yup from "yup";
 import { useAppStore } from "../store/useAppStore";
+import { Contact, contactCategories, contactStatus } from "../types/contact";
+import { useForm, yupResolver } from "@mantine/form";
+import { useDisclosure } from "@mantine/hooks";
+import {
+  Button,
+  Modal,
+  SimpleGrid,
+  TextInput,
+  Select,
+  Textarea,
+  Group,
+} from "@mantine/core";
+import { IconEdit } from "@tabler/icons-react";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -31,31 +32,35 @@ const schema = yup.object().shape({
   description: yup.string(),
 });
 
-interface Props {}
+interface Props {
+  contact: Contact;
+}
 
-export default function ContactCreate(_props: Props): JSX.Element {
+export default function ContactEdit({ contact }: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
   const form = useForm<Omit<Contact, "id">>({
     mode: "uncontrolled",
     initialValues: {
-      name: "",
-      category: "Amigos",
-      status: "Pendiente",
-      phone: "",
-      description: "",
+      name: contact.name,
+      category: contact.category,
+      status: contact.status,
+      phone: contact.phone,
+      description: contact.description,
     },
 
     validate: yupResolver(schema),
   });
-  const addContact = useAppStore((store) => store.addContact);
+  const updateContact = useAppStore((store) => store.updateContact);
 
   return (
     <>
-      <Button onClick={open}>Agregar contacto</Button>
+      <Button onClick={open} variant="subtle" color="cyan">
+        <IconEdit />
+      </Button>
       <Modal opened={opened} onClose={close} title="Agregar contacto">
         <form
           onSubmit={form.onSubmit((values) => {
-            addContact(values);
+            updateContact({ ...values, id: contact.id });
             form.reset();
           })}
         >
@@ -99,7 +104,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
             >
               Cancelar
             </Button>
-            <Button type="submit">Agregar contacto</Button>
+            <Button type="submit">Actualizar contacto</Button>
           </Group>
         </form>
       </Modal>

@@ -1,7 +1,7 @@
-import { Button, Table } from "@mantine/core";
-import { IconEdit } from "@tabler/icons-react";
+import { Table } from "@mantine/core";
 import { useAppStore } from "../store/useAppStore";
 import ContactDelete from "./ContactDelete";
+import ContactEdit from "./ContactEdit";
 
 interface Props {}
 
@@ -15,9 +15,7 @@ export default function ContactList(_props: Props): JSX.Element {
       <Table.Td>{contact.category}</Table.Td>
       <Table.Td>{contact.status}</Table.Td>
       <Table.Td style={{ display: "flex", justifyContent: "end" }}>
-        <Button variant="subtle" color="cyan">
-          <IconEdit />
-        </Button>
+        <ContactEdit contact={contact} />
         <ContactDelete contact={contact} />
       </Table.Td>
     </Table.Tr>
