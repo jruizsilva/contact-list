@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { Contact } from "../types/contact";
 import { persist } from "zustand/middleware";
+import { capitalizeWords } from "../helpers/capitalizeWords";
 
 interface Store {
   contacts: Contact[];
@@ -19,7 +20,14 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
         set((state) => ({
           contacts: [
             ...state.contacts,
-            { id: `${state.contacts.length + 1}`, ...contact },
+            {
+              id: `${state.contacts.length + 1}`,
+              name: capitalizeWords(contact.name),
+              category: contact.category,
+              status: contact.status,
+              phone: contact.phone,
+              description: contact.description,
+            },
           ],
         })),
       updateContact: (contact: Contact) =>
