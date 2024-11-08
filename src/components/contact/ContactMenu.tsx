@@ -61,7 +61,6 @@ export default function ContactMenu(_props: Props): JSX.Element {
               <IconDownload style={{ width: rem(14), height: rem(14) }} />
             }
             onClick={() => {
-              console.log("hola");
               exportToExcel(contacts, "contact-list");
             }}
           >
@@ -76,6 +75,11 @@ export default function ContactMenu(_props: Props): JSX.Element {
             leftSection={
               <IconTrash style={{ width: rem(14), height: rem(14) }} />
             }
+            onClick={() => {
+              if (confirm("¿Estás seguro de eliminar todos los contactos?")) {
+                setContacts([]);
+              }
+            }}
           >
             Eliminar todos
           </Menu.Item>
