@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { MainLayout } from "../components/layouts/MainLayout";
-import ContactListPage from "../pages/ContactListPage";
+import ContactListPage from "../pages/ContactPage";
 import CustomerListPage from "../pages/CustomerListPage";
 
 interface Props {}

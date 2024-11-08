@@ -19,14 +19,7 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
         set((state) => ({
           contacts: [
             ...state.contacts,
-            {
-              id: `${state.contacts.length + 1}`,
-              name: contact.name,
-              description: contact.description,
-              category: contact.category,
-              phone: contact.phone,
-              status: contact.status,
-            },
+            { id: `${state.contacts.length + 1}`, ...contact },
           ],
         })),
       updateContact: (contact: Contact) =>

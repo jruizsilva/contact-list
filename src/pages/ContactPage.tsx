@@ -7,7 +7,7 @@ import ContactMenu from "../components/ContactMenu";
 
 interface Props {}
 
-export default function ContactListPage(_props: Props): JSX.Element {
+export default function ContactPage(_props: Props): JSX.Element {
   const [, setSearchParams] = useSearchParams();
 
   const handleFilterChange = (key: string, value: string) => {
