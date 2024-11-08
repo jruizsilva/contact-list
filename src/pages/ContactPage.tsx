@@ -1,9 +1,9 @@
 import { Group, Select } from "@mantine/core";
-import ContactCreate from "../components/ContactCreate";
-import ContactTable from "../components/ContactTable";
+import ContactCreate from "../components/contact/ContactCreate";
+import ContactTable from "../components/contact/ContactTable";
 import { useSearchParams } from "react-router-dom";
 import { contactCategories, contactStatus } from "../types/contact";
-import ContactMenu from "../components/ContactMenu";
+import ContactMenu from "../components/contact/ContactMenu";
 
 interface Props {}
 

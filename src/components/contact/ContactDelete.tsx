@@ -1,8 +1,8 @@
 import { ActionIcon, Button, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import { IconTrash } from "@tabler/icons-react";
-import { useAppStore } from "../store/useAppStore";
-import { Contact } from "../types/contact";
+import { useAppStore } from "../../store/useAppStore";
+import { Contact } from "../../types/contact";
 
 interface Props {
   contact: Contact;

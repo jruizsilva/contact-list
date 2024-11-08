@@ -6,9 +6,9 @@ import {
   IconFileImport,
 } from "@tabler/icons-react";
 import * as XLSX from "xlsx";
-import { Contact } from "../types/contact";
-import { useAppStore } from "../store/useAppStore";
-import { exportToExcel } from "../helpers/exportToExcel";
+import { Contact } from "../../types/contact";
+import { useAppStore } from "../../store/useAppStore";
+import { exportToExcel } from "../../helpers/exportToExcel";
 
 interface Props {}
 

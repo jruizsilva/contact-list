@@ -1,6 +1,6 @@
 import * as yup from "yup";
-import { useAppStore } from "../store/useAppStore";
-import { Contact, contactCategories, contactStatus } from "../types/contact";
+import { useAppStore } from "../../store/useAppStore";
+import { Contact, contactCategories, contactStatus } from "../../types/contact";
 import { useForm, yupResolver } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import {

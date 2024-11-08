@@ -10,9 +10,9 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm, yupResolver } from "@mantine/form";
-import { Contact, contactCategories, contactStatus } from "../types/contact";
+import { Contact, contactCategories, contactStatus } from "../../types/contact";
 import * as yup from "yup";
-import { useAppStore } from "../store/useAppStore";
+import { useAppStore } from "../../store/useAppStore";
 import { IconPlus } from "@tabler/icons-react";
 
 const schema = yup.object().shape({

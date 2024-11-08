@@ -1,5 +1,5 @@
 import { Group, Table } from "@mantine/core";
-import { useAppStore } from "../store/useAppStore";
+import { useAppStore } from "../../store/useAppStore";
 import ContactDelete from "./ContactDelete";
 import ContactEdit from "./ContactEdit";
 import { useEffect, useState } from "react";

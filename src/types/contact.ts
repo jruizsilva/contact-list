@@ -10,7 +10,7 @@ interface Contact {
 type ContactCategory =
   | "Familia 👨‍👩‍👧"
   | "Amigos 🤝"
-  | "Recreaciones 🏋️‍♂️"
+  | "Recreaciones 🏃‍♂️"
   | "Compras 🛒"
   | "Trabajo 💼"
   | "Estudio 📚";
@@ -24,7 +24,7 @@ type ContactStatus =
 export const contactCategories = [
   "Familia 👨‍👩‍👧",
   "Amigos 🤝",
-  "Recreaciones 🏋️‍♂️",
+  "Recreaciones 🏃‍♂️",
   "Compras 🛒",
   "Trabajo 💼",
   "Estudio 📚",
