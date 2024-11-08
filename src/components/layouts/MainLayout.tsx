@@ -1,5 +1,6 @@
 import {
   AppShell,
+  Box,
   Burger,
   Button,
   Container,
@@ -11,8 +12,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 const links = [
-  { to: "/", label: "Inicio" },
-  { to: "/usuarios", label: "Usuarios" },
+  { to: "/contactos", label: "Contactos" },
+  { to: "/clientes", label: "Clientes" },
 ];
 
 export function MainLayout() {
@@ -46,28 +47,13 @@ export function MainLayout() {
     >
       <AppShell.Header>
         <Container size="md" h={"100%"}>
-          <Group h={"100%"} justify="space-between">
-            <Text
-              size="xl"
-              fw={900}
-              variant="gradient"
-              gradient={{ from: "indigo", to: "teal", deg: 90 }}
-              visibleFrom="xs"
-            >
-              Contact List
-            </Text>
-            {/* <Group gap={5} visibleFrom="xs">
+          <Group h={"100%"}>
+            <Group gap={5} mx={"auto"} visibleFrom="xs">
               {items}
             </Group>
-            <UserMenu /> */}
-
-            <Burger
-              opened={opened}
-              onClick={toggle}
-              hiddenFrom="xs"
-              size="sm"
-            />
           </Group>
+
+          <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
         </Container>
       </AppShell.Header>
 

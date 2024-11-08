@@ -2,13 +2,32 @@ import { Table } from "@mantine/core";
 import { useAppStore } from "../store/useAppStore";
 import ContactDelete from "./ContactDelete";
 import ContactEdit from "./ContactEdit";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 interface Props {}
 
 export default function ContactList(_props: Props): JSX.Element {
   const contacts = useAppStore((store) => store.contacts);
+  const [contactList, setContactList] = useState(contacts);
+  const [searchParams] = useSearchParams();
 
-  const rows = contacts.map((contact) => (
+  useEffect(() => {
+    const category = searchParams.get("category");
+    const status = searchParams.get("status");
+    const filteredContacts = contacts.filter((contact) => {
+      if (category && contact.category !== category) {
+        return false;
+      }
+      if (status && contact.status !== status) {
+        return false;
+      }
+      return true;
+    });
+    setContactList(filteredContacts);
+  }, [contacts, searchParams]);
+
+  const rows = contactList.map((contact) => (
     <Table.Tr key={contact.name}>
       <Table.Td>{contact.name}</Table.Td>
       <Table.Td>{contact.description}</Table.Td>
