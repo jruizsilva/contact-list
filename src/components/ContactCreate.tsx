@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   Button,
   Group,
   Modal,
@@ -12,6 +13,7 @@ import { useForm, yupResolver } from "@mantine/form";
 import { Contact, contactCategories, contactStatus } from "../types/contact";
 import * as yup from "yup";
 import { useAppStore } from "../store/useAppStore";
+import { IconPlus } from "@tabler/icons-react";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -51,7 +53,15 @@ export default function ContactCreate(_props: Props): JSX.Element {
 
   return (
     <>
-      <Button onClick={open}>Agregar contacto</Button>
+      <ActionIcon
+        onClick={open}
+        variant="light"
+        size="lg"
+        radius="xl"
+        aria-label="Add"
+      >
+        <IconPlus style={{ width: "70%", height: "70%" }} stroke={1.5} />
+      </ActionIcon>
       <Modal opened={opened} onClose={close} title="Agregar contacto">
         <form
           onSubmit={form.onSubmit((values) => {

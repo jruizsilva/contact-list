@@ -30,7 +30,6 @@ export default function ContactList(_props: Props): JSX.Element {
   const rows = contactList.map((contact) => (
     <Table.Tr key={contact.name}>
       <Table.Td>{contact.name}</Table.Td>
-      <Table.Td>{contact.description}</Table.Td>
       <Table.Td>{contact.category}</Table.Td>
       <Table.Td>{contact.status}</Table.Td>
       <Table.Td style={{ display: "flex", justifyContent: "end" }}>
@@ -46,7 +45,6 @@ export default function ContactList(_props: Props): JSX.Element {
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Nombre</Table.Th>
-            <Table.Th>Descripción</Table.Th>
             <Table.Th>Categoria</Table.Th>
             <Table.Th>Estado</Table.Th>
             <Table.Th></Table.Th>

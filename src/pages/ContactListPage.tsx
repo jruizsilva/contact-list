@@ -25,7 +25,7 @@ export default function ContactListPage(_props: Props): JSX.Element {
     <>
       <Group justify="space-between" mb={"lg"}>
         <Group>
-          <ContactCreate />
+          <ContactMenu />
           <Select
             placeholder="Seleccione una categoria"
             data={contactCategories}
@@ -37,7 +37,8 @@ export default function ContactListPage(_props: Props): JSX.Element {
             onChange={(value) => handleFilterChange("status", value || "")}
           />
         </Group>
-        <ContactMenu />
+
+        <ContactCreate />
       </Group>
       <ContactList />
     </>

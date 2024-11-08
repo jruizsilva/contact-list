@@ -1,4 +1,4 @@
-import { Menu, Button, rem } from "@mantine/core";
+import { Menu, Button, rem, ActionIcon } from "@mantine/core";
 import {
   IconTrash,
   IconMenu2,
@@ -20,9 +20,9 @@ export default function ContactMenu(_props: Props): JSX.Element {
     <>
       <Menu shadow="md" width={200}>
         <Menu.Target>
-          <Button variant="transparent" color="gray">
-            <IconMenu2 />
-          </Button>
+          <ActionIcon variant="subtle" radius={"100%"} color="gray">
+            <IconMenu2 style={{ width: "70%", height: "70%" }} stroke={1.5} />
+          </ActionIcon>
         </Menu.Target>
 
         <Menu.Dropdown>
