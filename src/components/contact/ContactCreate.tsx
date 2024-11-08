@@ -43,7 +43,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
     initialValues: {
       name: "",
       category: "Amigos 🤝",
-      status: "En progreso 📆",
+      status: "Pendiente ⚠️",
       phone: "",
       description: "",
     },
