@@ -1,4 +1,4 @@
-import { Table } from "@mantine/core";
+import { Group, Table } from "@mantine/core";
 import { useAppStore } from "../store/useAppStore";
 import ContactDelete from "./ContactDelete";
 import ContactEdit from "./ContactEdit";
@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 
 interface Props {}
 
-export default function ContactList(_props: Props): JSX.Element {
+export default function ContactTable(_props: Props): JSX.Element {
   const contacts = useAppStore((store) => store.contacts);
   const [contactList, setContactList] = useState(contacts);
   const [searchParams] = useSearchParams();
@@ -33,8 +33,10 @@ export default function ContactList(_props: Props): JSX.Element {
       <Table.Td>{contact.category}</Table.Td>
       <Table.Td>{contact.status}</Table.Td>
       <Table.Td style={{ display: "flex", justifyContent: "end" }}>
-        <ContactEdit contact={contact} />
-        <ContactDelete contact={contact} />
+        <Group>
+          <ContactEdit contact={contact} />
+          <ContactDelete contact={contact} />
+        </Group>
       </Table.Td>
     </Table.Tr>
   ));

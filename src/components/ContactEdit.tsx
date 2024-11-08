@@ -11,6 +11,7 @@ import {
   Select,
   Textarea,
   Group,
+  ActionIcon,
 } from "@mantine/core";
 import { IconEdit } from "@tabler/icons-react";
 
@@ -54,9 +55,16 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
 
   return (
     <>
-      <Button onClick={open} variant="subtle" color="cyan">
-        <IconEdit />
-      </Button>
+      <ActionIcon
+        onClick={open}
+        variant="subtle"
+        color="cyan"
+        size={"lg"}
+        radius="xl"
+        aria-label="Edit"
+      >
+        <IconEdit style={{ width: "70%", height: "70%" }} stroke={1.5} />
+      </ActionIcon>
       <Modal opened={opened} onClose={close} title="Agregar contacto">
         <form
           onSubmit={form.onSubmit((values) => {

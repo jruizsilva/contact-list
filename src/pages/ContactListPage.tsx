@@ -1,6 +1,6 @@
 import { Group, Select } from "@mantine/core";
 import ContactCreate from "../components/ContactCreate";
-import ContactList from "../components/ContactList";
+import ContactTable from "../components/ContactTable";
 import { useSearchParams } from "react-router-dom";
 import { contactCategories, contactStatus } from "../types/contact";
 import ContactMenu from "../components/ContactMenu";
@@ -40,7 +40,7 @@ export default function ContactListPage(_props: Props): JSX.Element {
 
         <ContactCreate />
       </Group>
-      <ContactList />
+      <ContactTable />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Button, Text } from "@mantine/core";
+import { ActionIcon, Button, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import { IconTrash } from "@tabler/icons-react";
 import { useAppStore } from "../store/useAppStore";
@@ -27,9 +27,16 @@ export default function ContactDelete({ contact }: Props): JSX.Element {
     });
   return (
     <>
-      <Button variant="subtle" color="red" onClick={openModal}>
-        <IconTrash />
-      </Button>
+      <ActionIcon
+        onClick={openModal}
+        variant="subtle"
+        color="red"
+        size={"lg"}
+        radius="xl"
+        aria-label="Edit"
+      >
+        <IconTrash style={{ width: "70%", height: "70%" }} stroke={1.5} />
+      </ActionIcon>
     </>
   );
 }
