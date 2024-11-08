@@ -39,8 +39,8 @@ export default function ContactCreate(_props: Props): JSX.Element {
     mode: "uncontrolled",
     initialValues: {
       name: "",
-      category: "Amigos",
-      status: "Pendiente",
+      category: "Amigos 🤝",
+      status: "En progreso 📆",
       phone: "",
       description: "",
     },
