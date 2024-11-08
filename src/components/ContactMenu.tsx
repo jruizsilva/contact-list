@@ -5,14 +5,15 @@ import {
   IconDownload,
   IconFileImport,
 } from "@tabler/icons-react";
-import { useState } from "react";
 import * as XLSX from "xlsx";
 import { Contact } from "../types/contact";
+import { useAppStore } from "../store/useAppStore";
 
 interface Props {}
 
 export default function ContactMenu(_props: Props): JSX.Element {
-  const [sheetData, setSheetData] = useState<Contact[]>([]);
+  const setContacts = useAppStore((store) => store.setContacts);
+
   return (
     <>
       <Menu shadow="md" width={200}>
@@ -43,7 +44,7 @@ export default function ContactMenu(_props: Props): JSX.Element {
                     const sheet = workbook.Sheets[sheetName];
                     const sheetData = XLSX.utils.sheet_to_json(sheet);
 
-                    setSheetData(sheetData as Contact[]);
+                    setContacts(sheetData as Contact[]);
                   };
                   reader.readAsArrayBuffer(file);
                 }
