@@ -65,11 +65,10 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
       >
         <IconEdit style={{ width: "70%", height: "70%" }} stroke={1.5} />
       </ActionIcon>
-      <Modal opened={opened} onClose={close} title="Agregar contacto">
+      <Modal opened={opened} onClose={close} title="Editar contacto">
         <form
           onSubmit={form.onSubmit((values) => {
-            updateContact({ ...values, id: contact.id });
-            form.reset();
+            updateContact({ id: contact.id, ...values });
           })}
         >
           <SimpleGrid spacing={"xs"}>

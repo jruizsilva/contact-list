@@ -31,9 +31,7 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
         <Stack>
           <Group gap={"xs"} align="end">
             <Title order={5}>Nombre:</Title>
-            <Text size="sm" style={{ textTransform: "capitalize" }}>
-              {contact.name}
-            </Text>
+            <Text size="sm">{contact.name}</Text>
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Telefono:</Title>
