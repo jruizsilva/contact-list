@@ -4,6 +4,7 @@ import ContactDelete from "./ContactDelete";
 import ContactEdit from "./ContactEdit";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import ContactInfo from "./ContactInfo";
 
 interface Props {}
 
@@ -34,6 +35,7 @@ export default function ContactTable(_props: Props): JSX.Element {
       <Table.Td>{contact.status}</Table.Td>
       <Table.Td style={{ display: "flex", justifyContent: "end" }}>
         <Group>
+          <ContactInfo contact={contact} />
           <ContactEdit contact={contact} />
           <ContactDelete contact={contact} />
         </Group>
