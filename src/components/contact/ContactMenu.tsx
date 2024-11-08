@@ -9,6 +9,7 @@ import * as XLSX from "xlsx";
 import { Contact } from "../../types/contact";
 import { useAppStore } from "../../store/useAppStore";
 import { exportToExcel } from "../../helpers/exportToExcel";
+import { notifications } from "@mantine/notifications";
 
 interface Props {}
 
@@ -78,6 +79,10 @@ export default function ContactMenu(_props: Props): JSX.Element {
             onClick={() => {
               if (confirm("¿Estás seguro de eliminar todos los contactos?")) {
                 setContacts([]);
+                notifications.show({
+                  title: "Contactos eliminados",
+                  message: "Se han eliminado todos los contactos",
+                });
               }
             }}
           >

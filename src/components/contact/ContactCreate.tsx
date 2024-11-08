@@ -14,6 +14,7 @@ import { Contact, contactCategories, contactStatus } from "../../types/contact";
 import * as yup from "yup";
 import { useAppStore } from "../../store/useAppStore";
 import { IconPlus } from "@tabler/icons-react";
+import { notifications } from "@mantine/notifications";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -67,6 +68,12 @@ export default function ContactCreate(_props: Props): JSX.Element {
           onSubmit={form.onSubmit((values) => {
             addContact(values);
             form.reset();
+            close();
+            notifications.show({
+              title: "Contacto agregado",
+              message: "El contacto se ha agregado correctamente",
+              color: "green",
+            });
           })}
         >
           <SimpleGrid spacing={"xs"}>

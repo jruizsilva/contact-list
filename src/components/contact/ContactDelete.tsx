@@ -3,6 +3,7 @@ import { modals } from "@mantine/modals";
 import { IconTrash } from "@tabler/icons-react";
 import { useAppStore } from "../../store/useAppStore";
 import { Contact } from "../../types/contact";
+import { notifications } from "@mantine/notifications";
 
 interface Props {
   contact: Contact;
@@ -22,6 +23,10 @@ export default function ContactDelete({ contact }: Props): JSX.Element {
       labels: { confirm: "Eliminar contacto", cancel: "Cancelar" },
       onConfirm: () => {
         deleteContact(contact);
+        notifications.show({
+          title: "Contacto eliminado",
+          message: "El contacto se ha eliminado correctamente",
+        });
       },
       confirmProps: { color: "red" },
     });

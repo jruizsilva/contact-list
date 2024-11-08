@@ -14,6 +14,7 @@ import {
   ActionIcon,
 } from "@mantine/core";
 import { IconEdit } from "@tabler/icons-react";
+import { notifications } from "@mantine/notifications";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -69,6 +70,11 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
         <form
           onSubmit={form.onSubmit((values) => {
             updateContact({ id: contact.id, ...values });
+            notifications.show({
+              title: "Contacto actualizado",
+              message: "El contacto se ha actualizado correctamente",
+              color: "green",
+            });
           })}
         >
           <SimpleGrid spacing={"xs"}>
