@@ -1,11 +1,9 @@
 import {
   AppShell,
-  Box,
   Burger,
   Button,
   Container,
   Group,
-  Text,
   useMatches,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";

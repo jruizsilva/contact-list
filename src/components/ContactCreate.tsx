@@ -62,29 +62,34 @@ export default function ContactCreate(_props: Props): JSX.Element {
           <SimpleGrid spacing={"xs"}>
             <TextInput
               label="Nombre"
+              placeholder="Nombre del contacto"
               withAsterisk
               key={form.key("name")}
               {...form.getInputProps("name")}
             />
             <Select
               label="Categoria"
+              placeholder="Seleccione una categoria"
               withAsterisk
               data={contactCategories}
               {...form.getInputProps("category")}
             />
             <Select
               label="Estado"
+              placeholder="Seleccione un estado"
               withAsterisk
               data={contactStatus}
               {...form.getInputProps("status")}
             />
             <TextInput
               label="Telefono"
+              placeholder="Telefono del contacto"
               key={form.key("phone")}
               {...form.getInputProps("phone")}
             />
             <Textarea
               label="Descripción"
+              placeholder="Descripción del contacto"
               key={form.key("description")}
               {...form.getInputProps("description")}
             />
