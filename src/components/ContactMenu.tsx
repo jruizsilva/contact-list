@@ -8,10 +8,12 @@ import {
 import * as XLSX from "xlsx";
 import { Contact } from "../types/contact";
 import { useAppStore } from "../store/useAppStore";
+import { exportToExcel } from "../helpers/exportToExcel";
 
 interface Props {}
 
 export default function ContactMenu(_props: Props): JSX.Element {
+  const contacts = useAppStore((store) => store.contacts);
   const setContacts = useAppStore((store) => store.setContacts);
 
   return (
@@ -58,6 +60,10 @@ export default function ContactMenu(_props: Props): JSX.Element {
             leftSection={
               <IconDownload style={{ width: rem(14), height: rem(14) }} />
             }
+            onClick={() => {
+              console.log("hola");
+              exportToExcel(contacts, "contact-list");
+            }}
           >
             Exportar a excel
           </Menu.Item>
