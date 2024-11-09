@@ -12,9 +12,9 @@ interface Store {
   deleteContact: (contact: Contact) => void;
   customers: Customer[];
   setCustomers: (customers: Customer[]) => void;
-  addCustomers: (customer: Omit<Customer, "id">) => void;
-  updateCustomers: (customer: Customer) => void;
-  deleteCustomers: (customer: Customer) => void;
+  addCustomer: (customer: Omit<Customer, "id" | "created_at">) => void;
+  updateCustomer: (customer: Customer) => void;
+  deleteCustomer: (customer: Customer) => void;
 }
 
 export const useAppStore = create<Store, [["zustand/persist", Store]]>(
@@ -48,7 +48,7 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
         })),
       customers: [],
       setCustomers: (customers: Customer[]) => set({ customers }),
-      addCustomers: (customer: Omit<Customer, "id">) =>
+      addCustomer: (customer: Omit<Customer, "id" | "created_at">) =>
         set((state) => ({
           customers: [
             ...state.customers,
@@ -58,17 +58,19 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
               last_follow_up: customer.last_follow_up,
               purchased_products: customer.purchased_products,
               interests: customer.interests,
-              created_at: customer.created_at,
+              phone: customer.phone,
+              birthday: customer.birthday,
+              created_at: new Date(),
             },
           ],
         })),
-      updateCustomers: (customer: Customer) =>
+      updateCustomer: (customer: Customer) =>
         set((state) => ({
           customers: state.customers.map((c) =>
             c.id === customer.id ? customer : c
           ),
         })),
-      deleteCustomers: (customer: Customer) =>
+      deleteCustomer: (customer: Customer) =>
         set((state) => ({
           customers: state.customers.filter((c) => c.id !== customer.id),
         })),

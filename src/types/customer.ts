@@ -1,9 +1,11 @@
 interface Customer {
   id: string;
   name: string;
-  last_follow_up: Date;
+  last_follow_up: Date | null;
   purchased_products: string[];
   interests: string[];
+  phone: string;
+  birthday: Date | null;
   created_at: Date;
 }
 
