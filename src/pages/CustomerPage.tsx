@@ -1,11 +1,11 @@
-import { Title } from "@mantine/core";
+import CustomerTable from "../components/customer/CustomerTable";
 
 interface Props {}
 
 export default function CustomerPage(_props: Props): JSX.Element {
   return (
     <>
-      <Title>Hola</Title>
+      <CustomerTable />
     </>
   );
 }
