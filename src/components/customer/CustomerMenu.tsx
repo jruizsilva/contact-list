@@ -7,15 +7,15 @@ import {
   IconTrash,
 } from "@tabler/icons-react";
 import { exportToExcel } from "../../helpers/exportToExcel";
-import { Contact } from "../../types/contact";
 import { useAppStore } from "../../store/useAppStore";
 import * as XLSX from "xlsx";
+import { Customer } from "../../types/customer";
 
 interface Props {}
 
 export default function CustomerMenu(_props: Props): JSX.Element {
   const customers = useAppStore((store) => store.customers);
-  const setCustomers = useAppStore((store) => store.setContacts);
+  const setCustomers = useAppStore((store) => store.setCustomers);
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function CustomerMenu(_props: Props): JSX.Element {
                     const sheet = workbook.Sheets[sheetName];
                     const sheetData = XLSX.utils.sheet_to_json(sheet);
 
-                    setCustomers(sheetData as Contact[]);
+                    setCustomers(sheetData as Customer[]);
                   };
                   reader.readAsArrayBuffer(file);
                 }
