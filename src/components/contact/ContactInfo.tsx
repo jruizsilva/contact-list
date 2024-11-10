@@ -25,7 +25,7 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
       <Modal
         opened={opened}
         onClose={close}
-        title={<Title order={2}>Información del contacto</Title>}
+        title={<Text fz={"h2"}>Información del contacto</Text>}
       >
         {/* Modal content */}
         <Stack>

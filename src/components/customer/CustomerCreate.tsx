@@ -23,7 +23,7 @@ const schema = yup.object().shape({
     .required("La fecha del ultimo seguimiento es requerida"),
   purchased_products: yup.array().min(1).required("El producto es requerido"),
   birthday: yup.date(),
-  phone: yup.number(),
+  phone: yup.string(),
   interests: yup.array(),
 });
 
@@ -61,6 +61,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
       <Modal opened={opened} onClose={close} title="Agregar cliente">
         <form
           onSubmit={form.onSubmit((values) => {
+            console.log(values);
             addCustomer(values);
             form.reset();
             close();
@@ -82,16 +83,20 @@ export default function CustomerCreate(_props: Props): JSX.Element {
             <DatePickerInput
               label="Ultimo seguimiento"
               placeholder="Selecciona la fecha del ultimo seguimiento"
+              withAsterisk
               key={form.key("last_follow_up")}
               {...form.getInputProps("last_follow_up")}
             />
             <TagsInput
               label="Productos"
               placeholder="Productos que ha comprado"
+              withAsterisk
+              {...form.getInputProps("purchased_products")}
             />
             <DatePickerInput
               label="Fecha de nacimiento"
               placeholder="Ingrese la fecha de nacimiento"
+              {...form.getInputProps("birthday")}
             />
             <TextInput
               label="Telefono"
@@ -99,7 +104,11 @@ export default function CustomerCreate(_props: Props): JSX.Element {
               key={form.key("phone")}
               {...form.getInputProps("phone")}
             />
-            <TagsInput label="Interes" placeholder="Interes del cliente" />
+            <TagsInput
+              label="Interes"
+              placeholder="Interes del cliente"
+              {...form.getInputProps("interests")}
+            />
           </SimpleGrid>
           <Group justify="flex-end" mt={"md"}>
             <Button
@@ -111,7 +120,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
             >
               Cancelar
             </Button>
-            <Button type="submit">Agregar contacto</Button>
+            <Button type="submit">Agregar cliente</Button>
           </Group>
         </form>
       </Modal>

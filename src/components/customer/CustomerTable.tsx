@@ -2,6 +2,9 @@ import { Group, Table } from "@mantine/core";
 import { useAppStore } from "../../store/useAppStore";
 import CustomerMenu from "./CustomerMenu";
 import CustomerCreate from "./CustomerCreate";
+import CustomerInfo from "./CustomerInfo";
+import CustomerEdit from "./CustomerEdit";
+import CustomerDelete from "./CustomerDelete";
 
 interface Props {}
 
@@ -15,9 +18,9 @@ export default function CustomerTable(_props: Props): JSX.Element {
       <Table.Td>{customer.purchased_products}</Table.Td>
       <Table.Td style={{ display: "flex", justifyContent: "end" }}>
         <Group>
-          {/* <ContactInfo contact={customer} />
-          <ContactEdit contact={customer} />
-          <ContactDelete contact={customer} /> */}
+          <CustomerInfo customer={customer} />
+          <CustomerEdit customer={customer} />
+          <CustomerDelete customer={customer} />
         </Group>
       </Table.Td>
     </Table.Tr>
@@ -39,7 +42,7 @@ export default function CustomerTable(_props: Props): JSX.Element {
             <Table.Th></Table.Th>
           </Table.Tr>
         </Table.Thead>
-        <Table.Tbody></Table.Tbody>
+        <Table.Tbody>{rows}</Table.Tbody>
       </Table>
     </>
   );

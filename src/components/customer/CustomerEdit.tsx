@@ -1,6 +1,5 @@
 import * as yup from "yup";
 import { useAppStore } from "../../store/useAppStore";
-import { contactCategories, contactStatus } from "../../types/contact";
 import { useForm, yupResolver } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -39,10 +38,10 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
     initialValues: {
       id: customer.id,
       name: customer.name,
-      last_follow_up: customer.last_follow_up ?? customer.last_follow_up,
-      purchased_products: customer.purchased_products,
-      interests: customer.interests,
-      birthday: customer.birthday ?? customer.birthday,
+      last_follow_up: customer.last_follow_up,
+      purchased_products: [],
+      interests: [],
+      birthday: customer.birthday,
       phone: customer.phone,
       created_at: customer.created_at,
     },
@@ -93,10 +92,12 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
               label="Productos"
               placeholder="Productos que ha comprado"
               withAsterisk
+              {...form.getInputProps("purchased_products")}
             />
             <DatePickerInput
               label="Fecha de nacimiento"
               placeholder="Ingrese la fecha de nacimiento"
+              {...form.getInputProps("birthday")}
             />
             <TextInput
               label="Telefono"
@@ -104,7 +105,11 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
               key={form.key("phone")}
               {...form.getInputProps("phone")}
             />
-            <TagsInput label="Interes" placeholder="Interes del cliente" />
+            <TagsInput
+              label="Interes"
+              placeholder="Interes del cliente"
+              {...form.getInputProps("interests")}
+            />
           </SimpleGrid>
           <Group justify="flex-end" mt={"md"}>
             <Button
