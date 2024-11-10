@@ -1,10 +1,11 @@
-import { Group, Table } from "@mantine/core";
+import { Badge, Group, Table } from "@mantine/core";
 import { useAppStore } from "../../store/useAppStore";
 import CustomerMenu from "./CustomerMenu";
 import CustomerCreate from "./CustomerCreate";
 import CustomerInfo from "./CustomerInfo";
 import CustomerEdit from "./CustomerEdit";
 import CustomerDelete from "./CustomerDelete";
+import { formatDate } from "../../helpers/formatDate";
 
 interface Props {}
 
@@ -14,8 +15,19 @@ export default function CustomerTable(_props: Props): JSX.Element {
   const rows = customers.map((customer) => (
     <Table.Tr key={customer.name}>
       <Table.Td>{customer.name}</Table.Td>
-      <Table.Td>{customer.last_follow_up?.toString()}</Table.Td>
-      <Table.Td>{customer.purchased_products}</Table.Td>
+      <Table.Td>
+        {customer.last_follow_up !== null &&
+          formatDate(customer.last_follow_up.toString())}
+      </Table.Td>
+      <Table.Td>
+        <Group gap={6}>
+          {customer.purchased_products.map((product) => (
+            <Badge variant="default" color="blue">
+              {product}
+            </Badge>
+          ))}
+        </Group>
+      </Table.Td>
       <Table.Td style={{ display: "flex", justifyContent: "end" }}>
         <Group>
           <CustomerInfo customer={customer} />
