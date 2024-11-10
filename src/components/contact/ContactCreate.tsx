@@ -89,6 +89,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
               placeholder="Seleccione una categoria"
               withAsterisk
               data={contactCategories}
+              key={form.key("category")}
               {...form.getInputProps("category")}
             />
             <Select
@@ -96,6 +97,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
               placeholder="Seleccione un estado"
               withAsterisk
               data={contactStatus}
+              key={form.key("status")}
               {...form.getInputProps("status")}
             />
             <TextInput

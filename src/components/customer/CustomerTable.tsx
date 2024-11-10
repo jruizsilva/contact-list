@@ -13,7 +13,7 @@ export default function CustomerTable(_props: Props): JSX.Element {
   const customers = useAppStore((store) => store.customers);
 
   const rows = customers.map((customer) => (
-    <Table.Tr key={customer.name}>
+    <Table.Tr key={customer.id}>
       <Table.Td>{customer.name}</Table.Td>
       <Table.Td>
         {customer.last_follow_up !== null &&
@@ -21,8 +21,8 @@ export default function CustomerTable(_props: Props): JSX.Element {
       </Table.Td>
       <Table.Td>
         <Group gap={6}>
-          {customer.purchased_products.map((product) => (
-            <Badge variant="default" color="blue">
+          {customer.purchased_products.map((product, index) => (
+            <Badge variant="default" color="blue" key={index}>
               {product}
             </Badge>
           ))}

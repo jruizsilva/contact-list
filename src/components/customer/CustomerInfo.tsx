@@ -47,15 +47,15 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
             <Title order={5}>Ultimo seguimiento:</Title>
             <Text size="sm">
               {customer.last_follow_up !== null &&
-                formatDate(customer.last_follow_up.toString())}
+                formatDate(`${customer.last_follow_up}`)}
             </Text>
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Productos vendidos:</Title>
             <Text size="sm">
               <Group gap={6}>
-                {customer.purchased_products.map((product) => (
-                  <Badge variant="default" color="blue">
+                {customer.purchased_products.map((product, index) => (
+                  <Badge variant="default" color="blue" key={index}>
                     {product}
                   </Badge>
                 ))}
@@ -75,7 +75,13 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Intereses:</Title>
-            <Text size="sm">{customer.interests}</Text>
+            <Text size="sm">
+              {customer.interests.map((interst, index) => (
+                <Badge variant="default" color="blue" key={index}>
+                  {interst}
+                </Badge>
+              ))}
+            </Text>
           </Group>
         </Stack>
       </Modal>

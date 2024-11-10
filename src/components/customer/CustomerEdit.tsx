@@ -39,8 +39,8 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
       id: customer.id,
       name: customer.name,
       last_follow_up: customer.last_follow_up,
-      purchased_products: [],
-      interests: [],
+      purchased_products: customer.purchased_products,
+      interests: customer.interests,
       birthday: customer.birthday,
       phone: customer.phone,
       created_at: customer.created_at,
@@ -92,11 +92,13 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
               label="Productos"
               placeholder="Productos que ha comprado"
               withAsterisk
+              key={form.key("purchased_products")}
               {...form.getInputProps("purchased_products")}
             />
             <DatePickerInput
               label="Fecha de nacimiento"
               placeholder="Ingrese la fecha de nacimiento"
+              key={form.key("birthday")}
               {...form.getInputProps("birthday")}
             />
             <TextInput
@@ -108,6 +110,7 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
             <TagsInput
               label="Interes"
               placeholder="Interes del cliente"
+              key={form.key("interests")}
               {...form.getInputProps("interests")}
             />
           </SimpleGrid>

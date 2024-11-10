@@ -91,11 +91,13 @@ export default function CustomerCreate(_props: Props): JSX.Element {
               label="Productos"
               placeholder="Productos que ha comprado"
               withAsterisk
+              key={form.key("purchased_products")}
               {...form.getInputProps("purchased_products")}
             />
             <DatePickerInput
               label="Fecha de nacimiento"
               placeholder="Ingrese la fecha de nacimiento"
+              key={form.key("birthday")}
               {...form.getInputProps("birthday")}
             />
             <TextInput
@@ -107,6 +109,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
             <TagsInput
               label="Interes"
               placeholder="Interes del cliente"
+              key={form.key("interests")}
               {...form.getInputProps("interests")}
             />
           </SimpleGrid>
