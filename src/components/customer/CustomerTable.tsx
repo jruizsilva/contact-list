@@ -8,6 +8,21 @@ interface Props {}
 export default function CustomerTable(_props: Props): JSX.Element {
   const customers = useAppStore((store) => store.customers);
 
+  const rows = customers.map((customer) => (
+    <Table.Tr key={customer.name}>
+      <Table.Td>{customer.name}</Table.Td>
+      <Table.Td>{customer.last_follow_up?.toString()}</Table.Td>
+      <Table.Td>{customer.purchased_products}</Table.Td>
+      <Table.Td style={{ display: "flex", justifyContent: "end" }}>
+        <Group>
+          {/* <ContactInfo contact={customer} />
+          <ContactEdit contact={customer} />
+          <ContactDelete contact={customer} /> */}
+        </Group>
+      </Table.Td>
+    </Table.Tr>
+  ));
+
   return (
     <>
       <Group justify="space-between" mb={"lg"}>

@@ -3,19 +3,23 @@ import "./index.css";
 import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
 import "@mantine/notifications/styles.css";
+import "dayjs/locale/es";
 import App from "./App.tsx";
 import { MantineProvider } from "@mantine/core";
 import { BrowserRouter } from "react-router-dom";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
+import { DatesProvider } from "@mantine/dates";
 
 createRoot(document.getElementById("root")!).render(
   <MantineProvider defaultColorScheme="dark">
-    <Notifications />
-    <ModalsProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ModalsProvider>
+    <DatesProvider settings={{ locale: "es" }}>
+      <Notifications />
+      <ModalsProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ModalsProvider>
+    </DatesProvider>
   </MantineProvider>
 );

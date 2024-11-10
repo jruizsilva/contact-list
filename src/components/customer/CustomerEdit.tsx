@@ -1,18 +1,19 @@
+import * as yup from "yup";
+import { useAppStore } from "../../store/useAppStore";
+import { contactCategories, contactStatus } from "../../types/contact";
+import { useForm, yupResolver } from "@mantine/form";
+import { useDisclosure } from "@mantine/hooks";
 import {
-  ActionIcon,
   Button,
-  Group,
   Modal,
   SimpleGrid,
-  TagsInput,
   TextInput,
+  Group,
+  ActionIcon,
+  TagsInput,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { IconEdit } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
-import { IconPlus } from "@tabler/icons-react";
-import * as yup from "yup";
-import { useForm, yupResolver } from "@mantine/form";
-import { useAppStore } from "../../store/useAppStore";
 import { Customer } from "../../types/customer";
 import { DatePickerInput } from "@mantine/dates";
 
@@ -27,46 +28,48 @@ const schema = yup.object().shape({
   interests: yup.array(),
 });
 
-interface Props {}
+interface Props {
+  customer: Customer;
+}
 
-export default function CustomerCreate(_props: Props): JSX.Element {
+export default function CustomerEdit({ customer }: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
-  const form = useForm<Omit<Customer, "id" | "created_at">>({
+  const form = useForm<Customer>({
     mode: "uncontrolled",
     initialValues: {
-      name: "",
-      last_follow_up: null,
-      purchased_products: [],
-      birthday: null,
-      phone: "",
-      interests: [],
+      id: customer.id,
+      name: customer.name,
+      last_follow_up: customer.last_follow_up ?? customer.last_follow_up,
+      purchased_products: customer.purchased_products,
+      interests: customer.interests,
+      birthday: customer.birthday ?? customer.birthday,
+      phone: customer.phone,
+      created_at: customer.created_at,
     },
 
     validate: yupResolver(schema),
   });
-  const addCustomer = useAppStore((store) => store.addCustomer);
+  const updateCustomer = useAppStore((store) => store.updateCustomer);
 
   return (
     <>
       <ActionIcon
         onClick={open}
-        variant="light"
-        size="lg"
+        variant="subtle"
+        color="cyan"
+        size={"lg"}
         radius="xl"
-        aria-label="Add"
+        aria-label="Edit"
       >
-        <IconPlus style={{ width: "70%", height: "70%" }} stroke={1.5} />
+        <IconEdit style={{ width: "70%", height: "70%" }} stroke={1.5} />
       </ActionIcon>
-
-      <Modal opened={opened} onClose={close} title="Agregar cliente">
+      <Modal opened={opened} onClose={close} title="Editar cliente">
         <form
           onSubmit={form.onSubmit((values) => {
-            addCustomer(values);
-            form.reset();
-            close();
+            updateCustomer(values);
             notifications.show({
-              title: "Cliente agregado",
-              message: "El cliente se ha agregado correctamente",
+              title: "Cliente actualizado",
+              message: "El cliente se ha actualizado correctamente",
               color: "green",
             });
           })}
@@ -82,12 +85,14 @@ export default function CustomerCreate(_props: Props): JSX.Element {
             <DatePickerInput
               label="Ultimo seguimiento"
               placeholder="Selecciona la fecha del ultimo seguimiento"
+              withAsterisk
               key={form.key("last_follow_up")}
               {...form.getInputProps("last_follow_up")}
             />
             <TagsInput
               label="Productos"
               placeholder="Productos que ha comprado"
+              withAsterisk
             />
             <DatePickerInput
               label="Fecha de nacimiento"
@@ -111,7 +116,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
             >
               Cancelar
             </Button>
-            <Button type="submit">Agregar contacto</Button>
+            <Button type="submit">Actualizar cliente</Button>
           </Group>
         </form>
       </Modal>
