@@ -16,6 +16,7 @@ import {
 import { IconEdit } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 import CountrySelect from "../CountrySelect";
+import { DateInput } from "@mantine/dates";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -48,9 +49,11 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
       name: contact.name,
       category: contact.category,
       status: contact.status,
+      birthday: contact.birthday !== null ? new Date(contact.birthday) : null,
       country_code: contact.country_code,
       phone: contact.phone,
       description: contact.description,
+      created_at: contact.created_at,
     },
 
     validate: yupResolver(schema),
@@ -100,6 +103,12 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
               withAsterisk
               data={contactStatus}
               {...form.getInputProps("status")}
+            />
+            <DateInput
+              label="Fecha de nacimiento"
+              placeholder="Ingrese la fecha de nacimiento"
+              key={form.key("birthday")}
+              {...form.getInputProps("birthday")}
             />
             <CountrySelect
               label="País de residencia"
