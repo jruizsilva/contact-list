@@ -8,8 +8,8 @@ import {
 import * as XLSX from "xlsx";
 import { Contact } from "../../types/contact";
 import { useAppStore } from "../../store/useAppStore";
-import { exportToExcel } from "../../helpers/exportToExcel";
 import { notifications } from "@mantine/notifications";
+import { exportContactsToExcel } from "../../helpers/exportContactsToExcel";
 
 interface Props {}
 
@@ -45,9 +45,10 @@ export default function ContactMenu(_props: Props): JSX.Element {
                     const workbook = XLSX.read(data);
                     const sheetName = workbook.SheetNames[0];
                     const sheet = workbook.Sheets[sheetName];
-                    const sheetData = XLSX.utils.sheet_to_json(sheet);
+                    const sheetData: Contact[] =
+                      XLSX.utils.sheet_to_json(sheet);
 
-                    setContacts(sheetData as Contact[]);
+                    setContacts(sheetData);
                   };
                   reader.readAsArrayBuffer(file);
                 }
@@ -62,7 +63,7 @@ export default function ContactMenu(_props: Props): JSX.Element {
               <IconDownload style={{ width: rem(14), height: rem(14) }} />
             }
             onClick={() => {
-              exportToExcel(contacts, "contact-list");
+              exportContactsToExcel(contacts, "contact-list");
             }}
           >
             Exportar a excel

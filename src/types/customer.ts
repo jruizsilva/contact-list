@@ -10,4 +10,16 @@ interface Customer {
   created_at: Date;
 }
 
-export type { Customer };
+interface CustomerString {
+  id: string;
+  name: string;
+  last_follow_up: string;
+  purchased_products: string;
+  interests: string;
+  phone: string;
+  country_code: string;
+  birthday: string;
+  created_at: string;
+}
+
+export type { Customer, CustomerString };

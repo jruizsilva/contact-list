@@ -6,10 +6,10 @@ import {
   IconDownload,
   IconTrash,
 } from "@tabler/icons-react";
-import { exportToExcel } from "../../helpers/exportToExcel";
 import { useAppStore } from "../../store/useAppStore";
 import * as XLSX from "xlsx";
-import { Customer } from "../../types/customer";
+import { Customer, CustomerString } from "../../types/customer";
+import { exportCustomersToExcel } from "../../helpers/exportCustomersToExcel";
 
 interface Props {}
 
@@ -42,12 +42,40 @@ export default function CustomerMenu(_props: Props): JSX.Element {
                   const reader = new FileReader();
                   reader.onload = (event) => {
                     const data = event.target?.result;
-                    const workbook = XLSX.read(data);
-                    const sheetName = workbook.SheetNames[0];
-                    const sheet = workbook.Sheets[sheetName];
-                    const sheetData = XLSX.utils.sheet_to_json(sheet);
+                    if (data) {
+                      const workbook = XLSX.read(data, { type: "array" });
+                      const sheetName = workbook.SheetNames[0];
+                      const sheet = workbook.Sheets[sheetName];
+                      const sheetData: CustomerString[] =
+                        XLSX.utils.sheet_to_json(sheet);
 
-                    setCustomers(sheetData as Customer[]);
+                      // Mapea los datos al tipo Customer
+                      const formattedData: Customer[] = sheetData.map(
+                        (item) => ({
+                          id: item["id"] as string,
+                          name: item["name"] as string,
+                          last_follow_up: item["last_follow_up"]
+                            ? new Date(item["last_follow_up"])
+                            : null,
+                          purchased_products:
+                            (item["purchased_products"] as string)
+                              ?.split(",")
+                              .map((prod) => prod.trim()) || [],
+                          interests:
+                            (item["interests"] as string)
+                              ?.split(",")
+                              .map((interest) => interest.trim()) || [],
+                          phone: item["phone"] as string,
+                          country_code: item["country_code"] as string,
+                          birthday: item["birthday"]
+                            ? new Date(item["birthday"])
+                            : null,
+                          created_at: new Date(item["created_at"]),
+                        })
+                      );
+
+                      setCustomers(formattedData);
+                    }
                   };
                   reader.readAsArrayBuffer(file);
                 }
@@ -55,14 +83,15 @@ export default function CustomerMenu(_props: Props): JSX.Element {
               input.click();
             }}
           >
-            Importar desde excel
+            Importar desde Excel
           </Menu.Item>
+
           <Menu.Item
             leftSection={
               <IconDownload style={{ width: rem(14), height: rem(14) }} />
             }
             onClick={() => {
-              exportToExcel(customers, "customer-list");
+              exportCustomersToExcel(customers, "customer-list");
             }}
           >
             Exportar a excel
