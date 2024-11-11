@@ -3,10 +3,10 @@ interface Customer {
   name: string;
   last_follow_up: Date | null;
   purchased_products: string[];
-  interests: string[];
   country_code: string;
   phone: string;
   birthday: Date | null;
+  description: string;
   created_at: Date;
 }
 
@@ -15,10 +15,10 @@ interface CustomerString {
   name: string;
   last_follow_up: string;
   purchased_products: string;
-  interests: string;
-  phone: string;
   country_code: string;
+  phone: string;
   birthday: string;
+  description: string;
   created_at: string;
 }
 

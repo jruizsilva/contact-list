@@ -1,13 +1,25 @@
 interface Contact {
   id: string;
   name: string;
-  description: string;
   category: ContactCategory;
+  status: ContactStatus;
   birthday: Date | null;
   country_code: string;
   phone: string;
-  status: ContactStatus;
+  description: string;
   created_at: Date;
+}
+
+interface ContactString {
+  id: string;
+  name: string;
+  category: ContactCategory;
+  status: ContactStatus;
+  birthday: string | null;
+  country_code: string;
+  phone: string;
+  description: string;
+  created_at: string;
 }
 
 type ContactCategory =
@@ -40,4 +52,4 @@ export const contactStatus = [
   "Sin interes ❌",
 ];
 
-export type { Contact, ContactCategory, ContactStatus };
+export type { Contact, ContactCategory, ContactString, ContactStatus };

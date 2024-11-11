@@ -63,10 +63,7 @@ export default function CustomerMenu(_props: Props): JSX.Element {
                             (item["purchased_products"] as string)
                               ?.split(",")
                               .map((prod) => prod.trim()) || [],
-                          interests:
-                            (item["interests"] as string)
-                              ?.split(",")
-                              .map((interest) => interest.trim()) || [],
+                          description: item["description"] as string,
                           phone: item["phone"] as string,
                           country_code: item["country_code"] as string,
                           birthday: item["birthday"]

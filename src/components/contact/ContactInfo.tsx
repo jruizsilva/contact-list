@@ -35,6 +35,14 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
             <Text size="sm">{contact.name}</Text>
           </Group>
           <Group gap={"xs"} align="end">
+            <Title order={5}>Categoria:</Title>
+            <Text size="sm">{contact.category}</Text>
+          </Group>
+          <Group gap={"xs"} align="end">
+            <Title order={5}>Estado:</Title>
+            <Text size="sm">{contact.status}</Text>
+          </Group>
+          <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de nacimiento:</Title>
             <Text size="sm">
               {contact.birthday !== null &&
@@ -48,14 +56,6 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
           <Group gap={"xs"} align="end">
             <Title order={5}>Descripción:</Title>
             <Text size="sm">{contact.description}</Text>
-          </Group>
-          <Group gap={"xs"} align="end">
-            <Title order={5}>Categoria:</Title>
-            <Text size="sm">{contact.category}</Text>
-          </Group>
-          <Group gap={"xs"} align="end">
-            <Title order={5}>Estado:</Title>
-            <Text size="sm">{contact.status}</Text>
           </Group>
         </Stack>
       </Modal>

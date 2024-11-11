@@ -41,7 +41,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
       birthday: null,
       country_code: "+54",
       phone: "",
-      interests: [],
+      description: "",
     },
 
     validate: yupResolver(schema),
@@ -123,11 +123,11 @@ export default function CustomerCreate(_props: Props): JSX.Element {
                 {...form.getInputProps("phone")}
               />
             </Group>
-            <TagsInput
-              label="Interes"
-              placeholder="Interes del cliente"
-              key={form.key("interests")}
-              {...form.getInputProps("interests")}
+            <TextInput
+              label="Descripción"
+              placeholder="Descripción del cliente"
+              key={form.key("description")}
+              {...form.getInputProps("description")}
             />
           </SimpleGrid>
           <Group justify="flex-end" mt={"md"}>

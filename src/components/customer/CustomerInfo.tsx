@@ -74,11 +74,7 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Intereses:</Title>
-            {customer.interests.map((interst, index) => (
-              <Badge variant="default" color="blue" key={index}>
-                {interst}
-              </Badge>
-            ))}
+            <Text size="sm">{customer.description}</Text>
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de creación:</Title>

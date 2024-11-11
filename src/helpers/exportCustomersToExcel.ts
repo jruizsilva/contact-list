@@ -11,7 +11,6 @@ export const exportCustomersToExcel = (data: Customer[], fileName: string) => {
     birthday: item.birthday ? `${item.birthday}` : "", // Convierte la fecha a una cadena
     created_at: item.created_at ? `${item.created_at}` : "", // Convierte la fecha a una cadena
     purchased_products: item.purchased_products.join(", "), // Convierte el array a una cadena separada por comas
-    interests: item.interests.join(", "), // Convierte el array a una cadena separada por comas
   }));
 
   // Crea un libro de trabajo (workbook) y una hoja de trabajo (worksheet)

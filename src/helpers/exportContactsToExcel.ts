@@ -1,17 +1,20 @@
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
-import { Contact } from "../types/contact";
+import { Contact, ContactString } from "../types/contact";
 
 // Función para exportar datos a Excel específicamente para Contact
 export const exportContactsToExcel = (data: Contact[], fileName: string) => {
   // Transforma los datos de la interfaz Contact para exportación
-  const transformedData = data.map((contact) => ({
+  const transformedData: ContactString[] = data.map((contact) => ({
     id: contact.id,
     name: contact.name,
-    description: contact.description || "", // Muestra cadena vacía si es opcional
     category: contact.category,
-    phone: contact.phone || "", // Muestra cadena vacía si es opcional
     status: contact.status,
+    birthday: contact.birthday !== null ? `${contact.birthday}` : null,
+    country_code: contact.country_code,
+    phone: contact.phone,
+    description: contact.description,
+    created_at: `${contact.created_at}`,
   }));
 
   // Crea un libro de trabajo (workbook) y una hoja de trabajo (worksheet)

@@ -44,10 +44,10 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
           ? new Date(customer.last_follow_up)
           : null,
       purchased_products: customer.purchased_products,
-      interests: customer.interests,
       birthday: customer.birthday !== null ? new Date(customer.birthday) : null,
       country_code: customer.country_code,
       phone: customer.phone,
+      description: customer.description,
       created_at: customer.created_at,
     },
 
@@ -128,11 +128,11 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
                 {...form.getInputProps("phone")}
               />
             </Group>
-            <TagsInput
-              label="Interes"
-              placeholder="Interes del cliente"
-              key={form.key("interests")}
-              {...form.getInputProps("interests")}
+            <TextInput
+              label="Descripción"
+              placeholder="Descripción del cliente"
+              key={form.key("description")}
+              {...form.getInputProps("description")}
             />
           </SimpleGrid>
           <Group justify="flex-end" mt={"md"}>
