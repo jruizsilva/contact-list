@@ -44,7 +44,7 @@ export default function ContactTable(_props: Props): JSX.Element {
   };
 
   const rows = contactList.map((contact) => (
-    <Table.Tr key={contact.name}>
+    <Table.Tr key={contact.id}>
       <Table.Td>{contact.name}</Table.Td>
       <Table.Td>{contact.category}</Table.Td>
       <Table.Td>{contact.status}</Table.Td>
