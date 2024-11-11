@@ -24,7 +24,7 @@ const schema = yup.object().shape({
     .required("La fecha del ultimo seguimiento es requerida"),
   purchased_products: yup.array().min(1).required("El producto es requerido"),
   birthday: yup.date().nullable(),
-  phone: yup.number(),
+  phone: yup.string(),
   interests: yup.array(),
 });
 
