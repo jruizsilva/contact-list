@@ -15,6 +15,7 @@ import {
 } from "@mantine/core";
 import { IconEdit } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
+import CountrySelect from "../CountrySelect";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -29,6 +30,7 @@ const schema = yup.object().shape({
     .string()
     .oneOf(contactStatus, "Estado debe ser uno de los valores permitidos")
     .required("Estado es requerido"),
+  country_code: yup.string().required(),
   phone: yup.string(),
   email: yup.string().email("Email no es valido"),
   description: yup.string(),
@@ -46,6 +48,7 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
       name: contact.name,
       category: contact.category,
       status: contact.status,
+      country_code: contact.country_code,
       phone: contact.phone,
       description: contact.description,
     },
@@ -96,11 +99,27 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
               data={contactStatus}
               {...form.getInputProps("status")}
             />
-            <TextInput
-              label="Telefono"
-              key={form.key("phone")}
-              {...form.getInputProps("phone")}
+            <CountrySelect
+              label="País de residencia"
+              key={form.key("country_code")}
+              {...form.getInputProps("country_code")}
             />
+            <Group>
+              <TextInput
+                readOnly
+                label="Código de país"
+                value={form.values.country_code}
+                style={{ flexBasis: "30%" }}
+              />
+
+              <TextInput
+                placeholder="Número de teléfono"
+                label="Número de teléfono"
+                flex={1}
+                key={form.key("phone")}
+                {...form.getInputProps("phone")}
+              />
+            </Group>
             <Textarea
               label="Descripción"
               key={form.key("description")}

@@ -15,6 +15,7 @@ import * as yup from "yup";
 import { useAppStore } from "../../store/useAppStore";
 import { IconPlus } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
+import CountrySelect from "../CountrySelect";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -29,6 +30,7 @@ const schema = yup.object().shape({
     .string()
     .oneOf(contactStatus, "Estado debe ser uno de los valores permitidos")
     .required("Estado es requerido"),
+  country_code: yup.string().required("El codigo del país es requerido"),
   phone: yup.string(),
   email: yup.string().email("Email no es valido"),
   description: yup.string(),
@@ -44,6 +46,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
       name: "",
       category: "Amigos 🤝",
       status: "Pendiente ⚠️",
+      country_code: "+54",
       phone: "",
       description: "",
     },
@@ -100,12 +103,28 @@ export default function ContactCreate(_props: Props): JSX.Element {
               key={form.key("status")}
               {...form.getInputProps("status")}
             />
-            <TextInput
-              label="Telefono"
-              placeholder="Telefono del contacto"
-              key={form.key("phone")}
-              {...form.getInputProps("phone")}
+            <CountrySelect
+              label="País de residencia"
+              key={form.key("country_code")}
+              {...form.getInputProps("country_code")}
             />
+
+            <Group>
+              <TextInput
+                readOnly
+                label="Código de país"
+                value={form.values.country_code}
+                style={{ flexBasis: "30%" }}
+              />
+
+              <TextInput
+                placeholder="Número de teléfono"
+                label="Número de teléfono"
+                flex={1}
+                key={form.key("phone")}
+                {...form.getInputProps("phone")}
+              />
+            </Group>
             <Textarea
               label="Descripción"
               placeholder="Descripción del contacto"

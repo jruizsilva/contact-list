@@ -1,9 +1,10 @@
 interface Contact {
   id: string;
   name: string;
-  description?: string;
+  description: string;
   category: ContactCategory;
-  phone?: string;
+  country_code: string;
+  phone: string;
   status: ContactStatus;
 }
 
