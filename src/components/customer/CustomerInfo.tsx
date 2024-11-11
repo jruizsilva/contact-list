@@ -12,7 +12,6 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconEye } from "@tabler/icons-react";
 import { Customer } from "../../types/customer";
 import { formatDate } from "../../helpers/formatDate";
-import { formatDateToDMY } from "../../helpers/formatDateToDMY";
 
 interface Props {
   customer: Customer;
@@ -64,8 +63,7 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de nacimiento:</Title>
             <Text size="sm">
-              {customer.birthday !== null &&
-                formatDateToDMY(`${customer.birthday}`)}
+              {customer.birthday !== null && `${customer.birthday}`}
             </Text>
           </Group>
           <Group gap={"xs"} align="end">
@@ -82,7 +80,7 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de creación:</Title>
-            <Text size="sm">{formatDateToDMY(`${customer.created_at}`)}</Text>
+            <Text size="sm">{`${customer.created_at}`}</Text>
           </Group>
           <Button
             component="a"

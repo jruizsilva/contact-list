@@ -9,7 +9,7 @@ export const exportCustomersToExcel = (data: Customer[], fileName: string) => {
     ...item,
     last_follow_up: item.last_follow_up ? `${item.last_follow_up}` : "", // Convierte la fecha a una cadena
     birthday: item.birthday ? `${item.birthday}` : "", // Convierte la fecha a una cadena
-    created_at: `${item.created_at}`, // Convierte la fecha a una cadena
+    created_at: item.created_at ? `${item.created_at}` : "", // Convierte la fecha a una cadena
     purchased_products: item.purchased_products.join(", "), // Convierte el array a una cadena separada por comas
     interests: item.interests.join(", "), // Convierte el array a una cadena separada por comas
   }));

@@ -17,7 +17,7 @@ export default function CustomerTable(_props: Props): JSX.Element {
       <Table.Td>{customer.name}</Table.Td>
       <Table.Td>
         {customer.last_follow_up !== null &&
-          formatDate(customer.last_follow_up.toString())}
+          formatDate(`${customer.last_follow_up}`)}
       </Table.Td>
       <Table.Td>
         <Group gap={6}>

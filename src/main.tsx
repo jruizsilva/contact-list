@@ -13,7 +13,12 @@ import { DatesProvider } from "@mantine/dates";
 
 createRoot(document.getElementById("root")!).render(
   <MantineProvider defaultColorScheme="dark">
-    <DatesProvider settings={{ locale: "es" }}>
+    <DatesProvider
+      settings={{
+        locale: "es",
+        timezone: "America/Argentina/Buenos_Aires",
+      }}
+    >
       <Notifications />
       <ModalsProvider>
         <BrowserRouter>
