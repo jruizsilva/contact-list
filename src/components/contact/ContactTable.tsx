@@ -66,11 +66,13 @@ export default function ContactTable(_props: Props): JSX.Element {
           <Select
             placeholder="Seleccione una categoria"
             data={contactCategories}
+            allowDeselect={false}
             onChange={(value) => handleFilterChange("category", value || "")}
           />
           <Select
             placeholder="Seleccione un estado"
             data={contactStatus}
+            allowDeselect={false}
             onChange={(value) => handleFilterChange("status", value || "")}
           />
         </Group>

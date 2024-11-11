@@ -8,6 +8,7 @@ export default function CountrySelect({ ...rest }: Props): JSX.Element {
     <>
       <Select
         placeholder="Seleccione el país"
+        allowDeselect={false}
         data={[
           {
             group: "América",

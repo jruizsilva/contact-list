@@ -88,12 +88,14 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
               {...form.getInputProps("name")}
             />
             <Select
+              allowDeselect={false}
               label="Categoria"
               withAsterisk
               data={contactCategories}
               {...form.getInputProps("category")}
             />
             <Select
+              allowDeselect={false}
               label="Estado"
               withAsterisk
               data={contactStatus}
