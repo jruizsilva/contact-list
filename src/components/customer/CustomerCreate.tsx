@@ -95,6 +95,12 @@ export default function CustomerCreate(_props: Props): JSX.Element {
               key={form.key("purchased_products")}
               {...form.getInputProps("purchased_products")}
             />
+            <DateInput
+              label="Fecha de nacimiento"
+              placeholder="Ingrese la fecha de nacimiento"
+              key={form.key("birthday")}
+              {...form.getInputProps("birthday")}
+            />
             <CountrySelect
               label="País de residencia"
               key={form.key("country_code")}

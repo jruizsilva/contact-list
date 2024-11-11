@@ -55,8 +55,6 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
   });
   const updateCustomer = useAppStore((store) => store.updateCustomer);
 
-  console.log(form.values);
-
   return (
     <>
       <ActionIcon

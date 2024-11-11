@@ -48,8 +48,6 @@ export default function ContactMenu(_props: Props): JSX.Element {
                     const sheetData: Contact[] =
                       XLSX.utils.sheet_to_json(sheet);
 
-                    console.log(sheetData);
-
                     setContacts(sheetData);
                   };
                   reader.readAsArrayBuffer(file);
