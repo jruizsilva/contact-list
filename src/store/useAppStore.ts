@@ -7,7 +7,7 @@ import { Customer } from "../types/customer";
 interface Store {
   contacts: Contact[];
   setContacts: (contacts: Contact[]) => void;
-  addContact: (contact: Omit<Contact, "id">) => void;
+  addContact: (contact: Omit<Contact, "id" | "created_at">) => void;
   updateContact: (contact: Contact) => void;
   deleteContact: (contact: Contact) => void;
   customers: Customer[];
@@ -22,7 +22,7 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
     (set) => ({
       contacts: [],
       setContacts: (contacts: Contact[]) => set({ contacts }),
-      addContact: (contact: Omit<Contact, "id">) =>
+      addContact: (contact: Omit<Contact, "id" | "created_at">) =>
         set((state) => ({
           contacts: [
             ...state.contacts,
@@ -31,9 +31,11 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
               name: capitalizeWords(contact.name),
               category: contact.category,
               status: contact.status,
+              birthday: contact.birthday,
               country_code: contact.country_code,
               phone: contact.phone,
               description: contact.description,
+              created_at: new Date(),
             },
           ],
         })),

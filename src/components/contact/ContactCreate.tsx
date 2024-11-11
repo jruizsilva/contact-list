@@ -16,6 +16,7 @@ import { useAppStore } from "../../store/useAppStore";
 import { IconPlus } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 import CountrySelect from "../CountrySelect";
+import { DateInput } from "@mantine/dates";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -40,12 +41,13 @@ interface Props {}
 
 export default function ContactCreate(_props: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
-  const form = useForm<Omit<Contact, "id">>({
+  const form = useForm<Omit<Contact, "id" | "created_at">>({
     mode: "uncontrolled",
     initialValues: {
       name: "",
       category: "Amigos 🤝",
       status: "Pendiente ⚠️",
+      birthday: null,
       country_code: "+54",
       phone: "",
       description: "",
@@ -104,6 +106,12 @@ export default function ContactCreate(_props: Props): JSX.Element {
               data={contactStatus}
               key={form.key("status")}
               {...form.getInputProps("status")}
+            />
+            <DateInput
+              label="Fecha de nacimiento"
+              placeholder="Ingrese la fecha de nacimiento"
+              key={form.key("birthday")}
+              {...form.getInputProps("birthday")}
             />
             <CountrySelect
               label="País de residencia"

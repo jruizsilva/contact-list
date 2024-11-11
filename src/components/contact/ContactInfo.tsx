@@ -2,6 +2,7 @@ import { ActionIcon, Group, Modal, Stack, Text, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconEye } from "@tabler/icons-react";
 import { Contact } from "../../types/contact";
+import { formatDateToDMY } from "../../helpers/formatDateToDMY";
 
 interface Props {
   contact: Contact;
@@ -32,6 +33,13 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
           <Group gap={"xs"} align="end">
             <Title order={5}>Nombre:</Title>
             <Text size="sm">{contact.name}</Text>
+          </Group>
+          <Group gap={"xs"} align="end">
+            <Title order={5}>Fecha de nacimiento:</Title>
+            <Text size="sm">
+              {contact.birthday !== null &&
+                `${formatDateToDMY(contact.birthday.toString())}`}
+            </Text>
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Telefono:</Title>

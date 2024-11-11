@@ -3,9 +3,11 @@ interface Contact {
   name: string;
   description: string;
   category: ContactCategory;
+  birthday: Date | null;
   country_code: string;
   phone: string;
   status: ContactStatus;
+  created_at: Date;
 }
 
 type ContactCategory =
