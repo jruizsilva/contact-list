@@ -31,6 +31,7 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
               name: capitalizeWords(contact.name),
               category: contact.category,
               status: contact.status,
+              country_code: contact.country_code,
               phone: contact.phone,
               description: contact.description,
             },

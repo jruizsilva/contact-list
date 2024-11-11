@@ -35,7 +35,7 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Telefono:</Title>
-            <Text size="sm">{contact.phone}</Text>
+            <Text size="sm">{`${contact.country_code} ${contact.phone}`}</Text>
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Descripción:</Title>
