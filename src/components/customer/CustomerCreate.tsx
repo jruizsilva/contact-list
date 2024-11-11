@@ -3,7 +3,6 @@ import {
   Button,
   Group,
   Modal,
-  Select,
   SimpleGrid,
   TagsInput,
   TextInput,
@@ -17,7 +16,6 @@ import { useAppStore } from "../../store/useAppStore";
 import { Customer } from "../../types/customer";
 import { DateInput } from "@mantine/dates";
 import CountrySelect from "../CountrySelect";
-import { useEffect } from "react";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -49,8 +47,6 @@ export default function CustomerCreate(_props: Props): JSX.Element {
     validate: yupResolver(schema),
   });
   const addCustomer = useAppStore((store) => store.addCustomer);
-
-  console.log(form.getValues());
 
   return (
     <>

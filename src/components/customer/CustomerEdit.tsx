@@ -10,7 +10,6 @@ import {
   Group,
   ActionIcon,
   TagsInput,
-  Input,
 } from "@mantine/core";
 import { IconEdit } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
