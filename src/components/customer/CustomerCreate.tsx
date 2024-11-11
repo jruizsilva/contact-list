@@ -63,7 +63,6 @@ export default function CustomerCreate(_props: Props): JSX.Element {
       <Modal opened={opened} onClose={close} title="Agregar cliente">
         <form
           onSubmit={form.onSubmit((values) => {
-            console.log(values);
             addCustomer(values);
             form.reset();
             close();
@@ -77,7 +76,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
           <SimpleGrid spacing={"xs"}>
             <TextInput
               label="Nombre"
-              placeholder="Nombre del contacto"
+              placeholder="Nombre del cliente"
               withAsterisk
               key={form.key("name")}
               {...form.getInputProps("name")}

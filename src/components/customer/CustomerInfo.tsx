@@ -74,13 +74,11 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Intereses:</Title>
-            <Text size="sm">
-              {customer.interests.map((interst, index) => (
-                <Badge variant="default" color="blue" key={index}>
-                  {interst}
-                </Badge>
-              ))}
-            </Text>
+            {customer.interests.map((interst, index) => (
+              <Badge variant="default" color="blue" key={index}>
+                {interst}
+              </Badge>
+            ))}
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de creación:</Title>
@@ -88,7 +86,7 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           </Group>
           <Button
             component="a"
-            href={`https://wa.me/${customer.phone}`}
+            href={`https://wa.me/${customer.country_code}${customer.phone}`}
             target="_blank"
           >
             Hacer seguimiento

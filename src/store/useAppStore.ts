@@ -58,6 +58,7 @@ export const useAppStore = create<Store, [["zustand/persist", Store]]>(
               last_follow_up: customer.last_follow_up,
               purchased_products: customer.purchased_products,
               interests: customer.interests,
+              country_code: customer.country_code,
               phone: customer.phone,
               birthday: customer.birthday,
               created_at: new Date(),
