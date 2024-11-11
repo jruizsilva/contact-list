@@ -10,11 +10,13 @@ import {
   Group,
   ActionIcon,
   TagsInput,
+  Input,
 } from "@mantine/core";
 import { IconEdit } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 import { Customer } from "../../types/customer";
-import { DatePickerInput } from "@mantine/dates";
+import { DateInput } from "@mantine/dates";
+import CountrySelect from "../CountrySelect";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -22,7 +24,7 @@ const schema = yup.object().shape({
     .date()
     .required("La fecha del ultimo seguimiento es requerida"),
   purchased_products: yup.array().min(1).required("El producto es requerido"),
-  birthday: yup.date(),
+  birthday: yup.date().nullable(),
   phone: yup.number(),
   interests: yup.array(),
 });
@@ -38,10 +40,14 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
     initialValues: {
       id: customer.id,
       name: customer.name,
-      last_follow_up: customer.last_follow_up,
+      last_follow_up:
+        customer.last_follow_up !== null
+          ? new Date(customer.last_follow_up)
+          : null,
       purchased_products: customer.purchased_products,
       interests: customer.interests,
-      birthday: customer.birthday,
+      birthday: customer.birthday !== null ? new Date(customer.birthday) : null,
+      country_code: customer.country_code,
       phone: customer.phone,
       created_at: customer.created_at,
     },
@@ -49,6 +55,8 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
     validate: yupResolver(schema),
   });
   const updateCustomer = useAppStore((store) => store.updateCustomer);
+
+  console.log(form.values);
 
   return (
     <>
@@ -81,7 +89,7 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
               key={form.key("name")}
               {...form.getInputProps("name")}
             />
-            <DatePickerInput
+            <DateInput
               label="Ultimo seguimiento"
               placeholder="Selecciona la fecha del ultimo seguimiento"
               withAsterisk
@@ -95,18 +103,34 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
               key={form.key("purchased_products")}
               {...form.getInputProps("purchased_products")}
             />
-            <DatePickerInput
+            <DateInput
               label="Fecha de nacimiento"
               placeholder="Ingrese la fecha de nacimiento"
               key={form.key("birthday")}
               {...form.getInputProps("birthday")}
             />
-            <TextInput
-              label="Telefono"
-              placeholder="Telefono del contacto"
-              key={form.key("phone")}
-              {...form.getInputProps("phone")}
+            <CountrySelect
+              label="País de residencia"
+              key={form.key("country_code")}
+              {...form.getInputProps("country_code")}
             />
+
+            <Group>
+              <TextInput
+                readOnly
+                label="Código de país"
+                value={form.values.country_code}
+                style={{ flexBasis: "30%" }}
+              />
+
+              <TextInput
+                placeholder="Número de teléfono"
+                label="Número de teléfono"
+                flex={1}
+                key={form.key("phone")}
+                {...form.getInputProps("phone")}
+              />
+            </Group>
             <TagsInput
               label="Interes"
               placeholder="Interes del cliente"

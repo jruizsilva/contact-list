@@ -1,7 +1,7 @@
-import { parseISO, formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { es } from "date-fns/locale";
 
 export const formatDate = (date: string) => {
-  const parsedDate = parseISO(date);
+  const parsedDate = new Date(date);
   return formatDistanceToNow(parsedDate, { addSuffix: true, locale: es });
 };

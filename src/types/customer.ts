@@ -5,6 +5,7 @@ interface Customer {
   purchased_products: string[];
   interests: string[];
   phone: string;
+  country_code: string;
   birthday: Date | null;
   created_at: Date;
 }

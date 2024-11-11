@@ -1,6 +1,7 @@
 import {
   ActionIcon,
   Badge,
+  Button,
   Group,
   Modal,
   Stack,
@@ -52,21 +53,19 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Productos vendidos:</Title>
-            <Text size="sm">
-              <Group gap={6}>
-                {customer.purchased_products.map((product, index) => (
-                  <Badge variant="default" color="blue" key={index}>
-                    {product}
-                  </Badge>
-                ))}
-              </Group>
-            </Text>
+            <Group gap={6}>
+              {customer.purchased_products.map((product, index) => (
+                <Badge variant="default" color="blue" key={index}>
+                  {product}
+                </Badge>
+              ))}
+            </Group>
           </Group>
           <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de nacimiento:</Title>
             <Text size="sm">
               {customer.birthday !== null &&
-                formatDateToDMY(customer.birthday.toString())}
+                formatDateToDMY(`${customer.birthday}`)}
             </Text>
           </Group>
           <Group gap={"xs"} align="end">
@@ -83,6 +82,17 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
               ))}
             </Text>
           </Group>
+          <Group gap={"xs"} align="end">
+            <Title order={5}>Fecha de creación:</Title>
+            <Text size="sm">{formatDateToDMY(`${customer.created_at}`)}</Text>
+          </Group>
+          <Button
+            component="a"
+            href={`https://wa.me/${customer.phone}`}
+            target="_blank"
+          >
+            Hacer seguimiento
+          </Button>
         </Stack>
       </Modal>
     </>

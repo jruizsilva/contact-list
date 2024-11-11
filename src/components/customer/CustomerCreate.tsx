@@ -3,6 +3,7 @@ import {
   Button,
   Group,
   Modal,
+  Select,
   SimpleGrid,
   TagsInput,
   TextInput,
@@ -14,7 +15,9 @@ import * as yup from "yup";
 import { useForm, yupResolver } from "@mantine/form";
 import { useAppStore } from "../../store/useAppStore";
 import { Customer } from "../../types/customer";
-import { DatePickerInput } from "@mantine/dates";
+import { DateInput } from "@mantine/dates";
+import CountrySelect from "../CountrySelect";
+import { useEffect } from "react";
 
 const schema = yup.object().shape({
   name: yup.string().required("Nombre es requerido"),
@@ -22,7 +25,7 @@ const schema = yup.object().shape({
     .date()
     .required("La fecha del ultimo seguimiento es requerida"),
   purchased_products: yup.array().min(1).required("El producto es requerido"),
-  birthday: yup.date(),
+  birthday: yup.date().nullable(),
   phone: yup.string(),
   interests: yup.array(),
 });
@@ -32,12 +35,13 @@ interface Props {}
 export default function CustomerCreate(_props: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
   const form = useForm<Omit<Customer, "id" | "created_at">>({
-    mode: "uncontrolled",
+    mode: "controlled",
     initialValues: {
       name: "",
       last_follow_up: null,
       purchased_products: [],
       birthday: null,
+      country_code: "+54",
       phone: "",
       interests: [],
     },
@@ -45,6 +49,8 @@ export default function CustomerCreate(_props: Props): JSX.Element {
     validate: yupResolver(schema),
   });
   const addCustomer = useAppStore((store) => store.addCustomer);
+
+  console.log(form.getValues());
 
   return (
     <>
@@ -80,7 +86,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
               key={form.key("name")}
               {...form.getInputProps("name")}
             />
-            <DatePickerInput
+            <DateInput
               label="Ultimo seguimiento"
               placeholder="Selecciona la fecha del ultimo seguimiento"
               withAsterisk
@@ -94,18 +100,28 @@ export default function CustomerCreate(_props: Props): JSX.Element {
               key={form.key("purchased_products")}
               {...form.getInputProps("purchased_products")}
             />
-            <DatePickerInput
-              label="Fecha de nacimiento"
-              placeholder="Ingrese la fecha de nacimiento"
-              key={form.key("birthday")}
-              {...form.getInputProps("birthday")}
+            <CountrySelect
+              label="País de residencia"
+              key={form.key("country_code")}
+              {...form.getInputProps("country_code")}
             />
-            <TextInput
-              label="Telefono"
-              placeholder="Telefono del contacto"
-              key={form.key("phone")}
-              {...form.getInputProps("phone")}
-            />
+
+            <Group>
+              <TextInput
+                readOnly
+                label="Código de país"
+                value={form.values.country_code}
+                style={{ flexBasis: "30%" }}
+              />
+
+              <TextInput
+                placeholder="Número de teléfono"
+                label="Número de teléfono"
+                flex={1}
+                key={form.key("phone")}
+                {...form.getInputProps("phone")}
+              />
+            </Group>
             <TagsInput
               label="Interes"
               placeholder="Interes del cliente"
