@@ -73,7 +73,7 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
             <Text size="sm">{`${customer.country_code} ${customer.phone}`}</Text>
           </Group>
           <Group gap={"xs"} align="end">
-            <Title order={5}>Intereses:</Title>
+            <Title order={5}>Descripción:</Title>
             <Text size="sm">{customer.description}</Text>
           </Group>
           <Group gap={"xs"} align="end">

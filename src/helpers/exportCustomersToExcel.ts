@@ -4,7 +4,7 @@ import { Customer, CustomerString } from "../types/customer";
 
 // Función para exportar datos a Excel
 export const exportCustomersToExcel = (data: Customer[], fileName: string) => {
-  // Transforma los datos para que los campos purchased_products e interests se muestren como cadenas
+  // Transforma los datos para que el campo purchased_products se muestre como cadena
   const transformedData: CustomerString[] = data.map((item) => ({
     ...item,
     last_follow_up: item.last_follow_up ? `${item.last_follow_up}` : "", // Convierte la fecha a una cadena

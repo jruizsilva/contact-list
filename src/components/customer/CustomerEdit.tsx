@@ -25,7 +25,7 @@ const schema = yup.object().shape({
   purchased_products: yup.array().min(1).required("El producto es requerido"),
   birthday: yup.date().nullable(),
   phone: yup.string(),
-  interests: yup.array(),
+  description: yup.string(),
 });
 
 interface Props {

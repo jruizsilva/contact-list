@@ -57,6 +57,12 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
             <Title order={5}>Descripción:</Title>
             <Text size="sm">{contact.description}</Text>
           </Group>
+          <Group gap={"xs"} align="end">
+            <Title order={5}>Fecha de creación:</Title>
+            <Text size="sm">{`${formatDateToDMY(
+              contact.created_at.toString()
+            )}`}</Text>
+          </Group>
         </Stack>
       </Modal>
     </>
