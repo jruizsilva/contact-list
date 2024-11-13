@@ -44,7 +44,7 @@ interface Props {
 export default function ContactEdit({ contact }: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
   const form = useForm<Omit<Contact, "id">>({
-    mode: "uncontrolled",
+    mode: "controlled",
     initialValues: {
       name: contact.name,
       category: contact.category,

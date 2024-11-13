@@ -28,7 +28,8 @@ type ContactCategory =
   | "Recreaciones 🏃‍♂️"
   | "Compras 🛒"
   | "Trabajo 💼"
-  | "Estudio 📚";
+  | "Estudio 📚"
+  | "Inquilino 🏠";
 
 type ContactStatus =
   | "Pendiente ⚠️"
@@ -43,6 +44,7 @@ export const contactCategories = [
   "Compras 🛒",
   "Trabajo 💼",
   "Estudio 📚",
+  "Inquilino 🏠",
 ];
 
 export const contactStatus = [

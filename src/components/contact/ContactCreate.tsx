@@ -42,7 +42,7 @@ interface Props {}
 export default function ContactCreate(_props: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
   const form = useForm<Omit<Contact, "id" | "created_at">>({
-    mode: "uncontrolled",
+    mode: "controlled",
     initialValues: {
       name: "",
       category: "Amigos 🤝",

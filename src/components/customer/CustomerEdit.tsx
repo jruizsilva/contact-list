@@ -35,7 +35,7 @@ interface Props {
 export default function CustomerEdit({ customer }: Props): JSX.Element {
   const [opened, { open, close }] = useDisclosure(false);
   const form = useForm<Customer>({
-    mode: "uncontrolled",
+    mode: "controlled",
     initialValues: {
       id: customer.id,
       name: customer.name,
