@@ -7,7 +7,6 @@ interface Contact {
   country_code: string;
   phone: string;
   description: string;
-  created_at: Date;
 }
 
 interface ContactString {
@@ -19,7 +18,6 @@ interface ContactString {
   country_code: string;
   phone: string;
   description: string;
-  created_at: string;
 }
 
 type ContactCategory =

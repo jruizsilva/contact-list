@@ -7,7 +7,6 @@ interface Customer {
   phone: string;
   birthday: Date | null;
   description: string;
-  created_at: Date;
 }
 
 interface CustomerString {
@@ -19,7 +18,6 @@ interface CustomerString {
   phone: string;
   birthday: string;
   description: string;
-  created_at: string;
 }
 
 export type { Customer, CustomerString };
