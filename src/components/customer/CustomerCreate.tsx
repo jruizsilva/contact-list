@@ -82,6 +82,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
               {...form.getInputProps("name")}
             />
             <DateInput
+              clearable
               maxDate={new Date()}
               valueFormat="DD/MM/YYYY"
               label="Ultimo seguimiento"
@@ -98,6 +99,7 @@ export default function CustomerCreate(_props: Props): JSX.Element {
               {...form.getInputProps("purchased_products")}
             />
             <DateInput
+              clearable
               maxDate={new Date()}
               valueFormat="DD/MM/YYYY"
               label="Fecha de nacimiento"

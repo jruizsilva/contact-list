@@ -108,6 +108,7 @@ export default function ContactCreate(_props: Props): JSX.Element {
               {...form.getInputProps("status")}
             />
             <DateInput
+              clearable
               maxDate={new Date()}
               valueFormat="DD/MM/YYYY"
               label="Fecha de nacimiento"
