@@ -105,8 +105,10 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
               {...form.getInputProps("status")}
             />
             <DateInput
+              maxDate={new Date()}
+              valueFormat="DD/MM/YYYY"
               label="Fecha de nacimiento"
-              placeholder="Ingrese la fecha de nacimiento"
+              placeholder="DD/MM/YYYY"
               key={form.key("birthday")}
               {...form.getInputProps("birthday")}
             />

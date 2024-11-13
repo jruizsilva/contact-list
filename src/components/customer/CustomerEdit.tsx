@@ -87,8 +87,10 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
               {...form.getInputProps("name")}
             />
             <DateInput
+              maxDate={new Date()}
+              valueFormat="DD/MM/YYYY"
               label="Ultimo seguimiento"
-              placeholder="Selecciona la fecha del ultimo seguimiento"
+              placeholder="DD/MM/YYYY"
               withAsterisk
               key={form.key("last_follow_up")}
               {...form.getInputProps("last_follow_up")}
@@ -101,8 +103,10 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
               {...form.getInputProps("purchased_products")}
             />
             <DateInput
+              maxDate={new Date()}
+              valueFormat="DD/MM/YYYY"
               label="Fecha de nacimiento"
-              placeholder="Ingrese la fecha de nacimiento"
+              placeholder="DD/MM/YYYY"
               key={form.key("birthday")}
               {...form.getInputProps("birthday")}
             />
