@@ -14,7 +14,6 @@ export const exportContactsToExcel = (data: Contact[], fileName: string) => {
     country_code: contact.country_code,
     phone: contact.phone,
     description: contact.description,
-    created_at: `${contact.created_at}`,
   }));
 
   // Crea un libro de trabajo (workbook) y una hoja de trabajo (worksheet)

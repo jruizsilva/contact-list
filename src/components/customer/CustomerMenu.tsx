@@ -49,8 +49,6 @@ export default function CustomerMenu(_props: Props): JSX.Element {
                       const sheetData: CustomerString[] =
                         XLSX.utils.sheet_to_json(sheet);
 
-                      console.log(sheetData);
-
                       // Mapea los datos al tipo Customer
                       const formattedData: Customer[] = sheetData.map(
                         (item) => ({
@@ -69,7 +67,6 @@ export default function CustomerMenu(_props: Props): JSX.Element {
                           birthday: item["birthday"]
                             ? new Date(item["birthday"])
                             : null,
-                          created_at: new Date(item["created_at"]),
                         })
                       );
 

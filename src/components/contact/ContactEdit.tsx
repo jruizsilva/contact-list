@@ -53,7 +53,6 @@ export default function ContactEdit({ contact }: Props): JSX.Element {
       country_code: contact.country_code,
       phone: contact.phone,
       description: contact.description,
-      created_at: contact.created_at,
     },
 
     validate: yupResolver(schema),

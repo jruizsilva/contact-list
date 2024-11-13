@@ -48,7 +48,6 @@ export default function CustomerEdit({ customer }: Props): JSX.Element {
       country_code: customer.country_code,
       phone: customer.phone,
       description: customer.description,
-      created_at: customer.created_at,
     },
 
     validate: yupResolver(schema),
