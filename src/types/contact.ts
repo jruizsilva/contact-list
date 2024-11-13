@@ -23,6 +23,7 @@ interface ContactString {
 type ContactCategory =
   | "Familia 👨‍👩‍👧"
   | "Amigos 🤝"
+  | "Conocido 🙍‍♂️"
   | "Recreaciones 🏃‍♂️"
   | "Compras 🛒"
   | "Trabajo 💼"
@@ -38,6 +39,7 @@ type ContactStatus =
 export const contactCategories = [
   "Familia 👨‍👩‍👧",
   "Amigos 🤝",
+  "Conocido 🙍‍♂️",
   "Recreaciones 🏃‍♂️",
   "Compras 🛒",
   "Trabajo 💼",
