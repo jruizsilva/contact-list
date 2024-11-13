@@ -64,7 +64,7 @@ export default function CustomerInfo({ customer }: Props): JSX.Element {
           <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de nacimiento:</Title>
             <Text size="sm">
-              {customer.birthday !== null &&
+              {customer.birthday &&
                 `${formatDateToDMY(customer.birthday.toString())}`}
             </Text>
           </Group>

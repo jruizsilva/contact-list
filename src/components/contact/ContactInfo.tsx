@@ -53,7 +53,7 @@ export default function ContactInfo({ contact }: Props): JSX.Element {
           <Group gap={"xs"} align="end">
             <Title order={5}>Fecha de nacimiento:</Title>
             <Text size="sm">
-              {contact.birthday !== null &&
+              {contact.birthday &&
                 `${formatDateToDMY(contact.birthday.toString())}`}
             </Text>
           </Group>
